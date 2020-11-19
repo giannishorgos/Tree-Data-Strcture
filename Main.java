@@ -1,14 +1,12 @@
 package com.java.btree;
 
-import com.java.btree.BalancedTree;
-
 import java.time.LocalDateTime;
 import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
         int size = 100000;
-        BalancedTree btree = new BalancedTree(30000);
+        SearchTree btree = new SearchTree(30000);
         Random rand = new Random();
 
         for(int i = 0; i < size; i++)
