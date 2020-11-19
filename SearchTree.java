@@ -4,10 +4,10 @@ import com.java.btree.Node;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
-public class BalancedTree {
+public class SearchTree {
     private Node root;
 
-    public BalancedTree(int data) {
+    public SearchTree(int data) {
         root = new Node(data);
     }
 
