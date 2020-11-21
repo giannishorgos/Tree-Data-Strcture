@@ -60,7 +60,7 @@ public class AvlTree {
     private void rotation(AvlNode finalNode) {
         AvlNode temp = root;
         AvlNode path;
-        String rot = ""
+        String rot = "";
         while(temp != finalNode) {
             if(temp.getBalancedFactor() > 1) {
                 path = temp;
@@ -92,8 +92,26 @@ public class AvlTree {
             }
         }
     }
-    private void llRotation(AvlNode node) {}
-    private void rrRotation(AvlNode node) {}
+    private void llRotation(AvlNode node) {
+        AvlNode right = null, temp = node;
+
+        temp = temp.getLeft();
+        if(temp.getRight() != null) right = temp.getRight();
+        temp.setRight(node);
+        if(right != null) {
+            node.setLeft(right);
+        }
+    }
+    private void rrRotation(AvlNode node) {
+        AvlNode left = null, temp = node;
+
+        temp = temp.getRight();
+        if(temp.getLeft() != null) left = temp.getRight();
+        temp.setLeft(node);
+        if(left != null) {
+            node.setRight(left);
+        }
+    }
     private void lrRotation(AvlNode node) {}
     private void rlRotation(AvlNode node) {}
 }
