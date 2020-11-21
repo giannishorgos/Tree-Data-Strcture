@@ -88,7 +88,6 @@ public class AvlTree {
                         lrRotation(temp);
                         break;
                 }
-
             }
         }
     }
@@ -100,7 +99,11 @@ public class AvlTree {
         temp.setRight(node);
         if(right != null) {
             node.setLeft(right);
+            node.setLeftHeight(node.getLeft().getLeftHeight() + 1);
         }
+        //recalculate the balance factor
+        temp.setLeftHeight(temp.getLeft().getLeftHeight() + 1);
+        temp.setRightHeight(temp.getRight().getLeftHeight() + 1);
     }
     private void rrRotation(AvlNode node) {
         AvlNode left = null, temp = node;
@@ -110,8 +113,28 @@ public class AvlTree {
         temp.setLeft(node);
         if(left != null) {
             node.setRight(left);
+            node.setRightHeight(node.getRight().getRightHeight() + 1);
         }
+        //recalculate the balance factor
+        temp.setLeftHeight(temp.getLeft().getLeftHeight() + 1);
+        temp.setRightHeight(temp.getRight().getLeftHeight() + 1);
     }
-    private void lrRotation(AvlNode node) {}
+    private void lrRotation(AvlNode node) {
+        AvlNode left = null, temp;
+
+        temp = node.getLeft().getRight();
+        if(temp.getLeft() != null) {
+            left = temp.getLeft();
+        }
+        temp.setLeft(node.getLeft());
+        if(left != null) {
+            node.getLeft().setRight(left);
+
+        }
+        node.setLeft(temp);
+        temp = node.getLeft().getLeft();
+
+
+    }
     private void rlRotation(AvlNode node) {}
 }
