@@ -2,6 +2,8 @@ package com.java.btree;
 
 import com.java.btree.Node;
 
+import static java.lang.StrictMath.abs;
+
 public class AvlNode {
     private int leftHeight;
     private int rightHeight;
@@ -33,7 +35,7 @@ public class AvlNode {
     }
 
     public int getBalancedFactor() {
-        balancedFactor = leftHeight - rightHeight;
+        balancedFactor = abs(leftHeight - rightHeight);
         return balancedFactor;
     }
 
