@@ -53,39 +53,5 @@ public class AvlTree {
             tempHeight--;
         }
         System.out.println(root.getRightHeight());
-/*
-        while
-            AvlNode node = addedRight ? temp.getRight() : temp.getLeft();
-            AvlNode tracker = root;
-            temp = root;
-            int counter = 0;
-            while(tracker != node) {
-                while (temp != node) {
-                    counter++;
-                    if (node.getData() >= temp.getData()) {
-                        temp = temp.getRight();
-                    } else {
-                        temp = temp.getLeft();
-                    }
-                }
-                //updates the height of the right or left subtree
-                if(addedRight) {
-                    if(tracker.getRightHeight() < counter) {
-                        tracker.setRightHeight(counter);
-                    }
-                }
-                else {
-                    if(tracker.getLeftHeight() < counter) {
-                        tracker.setLeftHeight(counter);
-                    }
-                }
-                if (node.getData() >= tracker.getData()) {
-                    tracker = tracker.getRight();
-                }
-                else {
-                    tracker = tracker.getLeft();
-                }
-            }
-         */
     }
 }
