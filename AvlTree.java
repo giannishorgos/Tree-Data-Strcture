@@ -129,12 +129,68 @@ public class AvlTree {
         temp.setLeft(node.getLeft());
         if(left != null) {
             node.getLeft().setRight(left);
-
+            if(left.getRightHeight() > left.getLeftHeight()) {
+                node.getLeft().setRightHeight(left.getRightHeight() + 1);
+            }
+            else {
+                node.getLeft().setRightHeight(left.getLeftHeight() + 1);
+            }
         }
+
         node.setLeft(temp);
-        temp = node.getLeft().getLeft();
+        temp = node.getLeft();
+        AvlNode neo = node.getLeft().getLeft();
+        if(neo.getRightHeight() > neo.getLeftHeight()) {
+            temp.setLeftHeight(neo.getRightHeight() + 1);
+        }
+        else {
+            temp.setLeftHeight(neo.getLeftHeight() + 1);
+        }
+        temp.setRightHeight(0);
 
-
+        if(temp.getRightHeight() > temp.getLeftHeight()) {
+            node.setLeftHeight(temp.getRightHeight() + 1);
+        }
+        else {
+            node.setLeftHeight(temp.getLeftHeight() + 1);
+        }
+        llRotation(node);
     }
-    private void rlRotation(AvlNode node) {}
+    private void rlRotation(AvlNode node) {
+        AvlNode right = null, temp;
+
+        temp = node.getRight().getLeft();
+        if(temp.getRight() != null) {
+            right = temp.getLeft();
+        }
+        temp.setRight(node.getRight());
+        if(right != null) {
+            node.getRight().setLeft(right);
+            if(right.getRightHeight() > right.getLeftHeight()) {
+                node.getRight().setLeftHeight(right.getRightHeight() + 1);
+            }
+            else {
+                node.getRight().setLeftHeight(right.getLeftHeight() + 1);
+            }
+        }
+        node.setRight(temp);
+        temp = node.getRight();
+
+        AvlNode neo = node.getRight().getRight();
+        if(neo.getRightHeight() > neo.getLeftHeight()) {
+            temp.setRightHeight(neo.getRightHeight() + 1);
+        }
+        else {
+            temp.setRightHeight(neo.getLeftHeight() + 1);
+        }
+        temp.setLeftHeight(0);
+
+        if(temp.getRightHeight() > temp.getLeftHeight()) {
+            node.setRightHeight(temp.getRightHeight() + 1);
+        }
+        else {
+            node.setRightHeight(temp.getLeftHeight() + 1);
+        }
+        rrRotation(node);
+    }
 }
