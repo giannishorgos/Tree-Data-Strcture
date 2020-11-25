@@ -2,10 +2,19 @@ package com.java.btree;
 
 import java.time.LocalDateTime;
 import java.util.Random;
+import com.java.btree.AvlTree;
 
 public class Main {
     public static void main(String[] args) {
-        int size = 100000;
+        AvlTree tree = new AvlTree(10);
+        tree.addNode(15);
+        tree.addNode(14);
+        tree.addNode(13);
+        tree.addNode(16);
+        tree.addNode(20);
+        tree.addNode(25);
+        tree.addNode(30);
+       /* int size = 100000;
         SearchTree btree = new SearchTree(30000);
         Random rand = new Random();
 
@@ -27,7 +36,7 @@ public class Main {
 //        System.out.println(mil2.getNano());
 //        System.out.println(mil1.getNano());
           System.out.println(steps + " in " + (mil2.getNano() - mil1.getNano()) + " millisec");
-//        System.out.println(btree.find(ff));
+//        System.out.println(btree.find(ff));*/
     }
     public static int find(int data, int[] arr, int size) {
         int steps = 0;
