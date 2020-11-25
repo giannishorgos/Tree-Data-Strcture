@@ -37,6 +37,14 @@ public class AvlTree {
 
         AvlNode finalNode = addedRight ? temp.getRight() : temp.getLeft();
         calculateBalancedFactor(finalNode, tempHeight);
+        temp = root;
+        while(temp != finalNode) {
+            if(temp.getBalancedFactor() > 1) {
+                rotation(temp, finalNode);
+            }
+        }
+
+        System.out.println(root.getBalancedFactor());
 
     }
     private void calculateBalancedFactor(AvlNode finalNode, int tempHeight) {
@@ -57,7 +65,7 @@ public class AvlTree {
             tempHeight--;
         }
     }
-    private void rotation(AvlNode finalNode) {
+    private void rotation(AvlNode root, AvlNode finalNode) {
         AvlNode temp = root;
         AvlNode path;
         String rot = "";
